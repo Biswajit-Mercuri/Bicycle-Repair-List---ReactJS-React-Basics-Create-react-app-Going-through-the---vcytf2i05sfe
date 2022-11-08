@@ -1,11 +1,14 @@
-import React from 'react';
-import Item from './Item';
-import { useSelector } from 'react-redux';
+import React from "react";
+import Item from "./Item";
+import { useSelector } from "react-redux";
 
-const List = () => {
+export default function List() {
+  const items = useSelector((state) => state.bicycle.items);
   return (
-    <div>List</div>
-  )
+    <div>
+      {items.map((item) => {
+        return <Item item={item} key={item.id} />;
+      })}
+    </div>
+  );
 }
-
-export default List
